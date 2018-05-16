@@ -54,15 +54,16 @@ weights_and2 = np.random.normal(size=3)
 weights_or = np.random.normal(size=3)
 
 
-for _ in range(10000):
+for _ in range(2000):
     data = [[0,0,0], [0,1,1], [1,0,1], [1,1,0]]
     shuffle(data)
     loss_sum = 0
     for i in data:
-        weights_and1, weights_and2, weights_or, losss = back_prop(i, weights_and1, weights_and2, weights_or, 1)
+        weights_and1, weights_and2, weights_or, losss = back_prop(i, weights_and1, weights_and2, weights_or, 0.5)
         loss_sum += abs(losss)
-    if _%1000 == 0:
-        print(loss_sum)
+    if _%200 == 0:
+        print("Iteration: ", _, "Loss: ", loss_sum)
+
 print("-------------------------------")
 print("Weights: ")
 print("And1: {}".format(weights_and1))
