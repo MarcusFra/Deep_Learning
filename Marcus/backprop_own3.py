@@ -48,7 +48,13 @@ def w_change_out(y, inputweight_1, inputweight_2, outputweight, X, learnrate):
                         sigmoid_diff(output(inputweight_1, inputweight_2, outputweight, X)) *  \
                         hidden_output(inputweight_1, inputweight_2, X)[:,i] * learnrate)) 
     return outputweight - w_change_per_epoch
-    
+
+#def w_change_out(y, inputweight_1, inputweight_2, outputweight, X, learnrate):
+#    w_change_per_epoch = np.sum(- loss(y, inputweight_1, inputweight_2, outputweight, X) * \
+#                                sigmoid_diff(output(inputweight_1, inputweight_2, outputweight, X)) *  \
+#                         hidden_output(inputweight_1, inputweight_2, X).reshape((3,4)) * learnrate, axis=1)
+#    return outputweight - w_change_per_epoch
+
 def hidden_loss(outputweight):
     return sigmoid_diff(output(inputweight_1, inputweight_2, outputweight, X)) * outputweight.reshape((3,1))
 
@@ -92,3 +98,5 @@ while (abs(loss(y, inputweight_1, inputweight_2, outputweight, X)) > z).any(): #
         print(outputweight)
         print(sum(abs(loss(y, inputweight_1, inputweight_2, outputweight, X))))
     iter += 1
+    
+
